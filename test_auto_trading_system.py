@@ -158,7 +158,7 @@ def test_sell_nice_timing_falling_trend_sell(mocker: MockerFixture):
     # Arrange
     sut = AutoTradingSystem()
     mock_brocker = mocker.patch("auto_trading_system.AutoTradingSystem.stock_brocker")
-    mock_brocker.get_price.return_value = [300, 200, 100]
+    mock_brocker.get_price.side_effect = [300, 200, 100]
 
     # Action
     sut.sell_nice_timing("Stock1", 3)
@@ -171,7 +171,7 @@ def test_sell_nice_timing_falling_trend_sell_all_last_price(mocker: MockerFixtur
     # Arrange
     sut = AutoTradingSystem()
     mock_brocker = mocker.patch("auto_trading_system.AutoTradingSystem.stock_brocker")
-    mock_brocker.get_price.return_value = [300, 200, 100]
+    mock_brocker.get_price.side_effect = [300, 200, 100]
 
     # Action
     sut.sell_nice_timing("Stock1", 3)
