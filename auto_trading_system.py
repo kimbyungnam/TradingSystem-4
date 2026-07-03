@@ -62,4 +62,4 @@ class AutoTradingSystem:
         time.sleep(0.2)
         price3 = self.get_price(stock_code)
         if price1 < price2 and price2 < price3:
-            self.stock_brocker.buy(stock_code, price // price3)
+            self.stock_brocker.buy(stock_code, price3, price // price3)
