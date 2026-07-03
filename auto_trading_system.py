@@ -1,6 +1,7 @@
 from typing import Protocol
 import time
 
+
 class StockBrocker(Protocol):
     @property
     def name(self) -> str: ...
