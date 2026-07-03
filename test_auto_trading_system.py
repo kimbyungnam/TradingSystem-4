@@ -1,25 +1,29 @@
 from pytest_mock import MockerFixture
 
-from auto_trading_system import AutoTradingSystem
+from auto_trading_system import AutoTradingSystem, KiwerStockBrocker
 
 
-def test_select_stock_brocker_kiwer():
+def test_create_stock_brocker_kiwer(mocker: MockerFixture):
     # Arrange
     sut = AutoTradingSystem()
+    mock_broker = mocker.Mock()
+    mock_broker.name = 'kiwer'
 
     # Action
-    sut.select_stock_brocker("kiwer")
+    sut.create_stock_brocker(mock_broker)
 
     # Assert
     assert sut.stock_brocker.name == "kiwer"
 
 
-def test_select_stock_brocker_nemo():
+def test_create_stock_brocker_nemo(mocker):
     # Arrange
     sut = AutoTradingSystem()
+    mock_broker = mocker.Mock()
+    mock_broker.name = 'nemo'
 
     # Action
-    sut.select_stock_brocker("nemo")
+    sut.create_stock_brocker(mock_broker)
 
     # Assert
     assert sut.stock_brocker.name == "nemo"
@@ -110,7 +114,7 @@ def test_buy_nice_timing_rising_trend_buy(mocker: MockerFixture):
     # Arrange
     sut = AutoTradingSystem()
     mock_brocker = mocker.patch("auto_trading_system.AutoTradingSystem.stock_brocker")
-    mock_brocker.get_price.return_value = [100, 200, 300]
+    mock_brocker.get_price.side_effect = [100, 200, 300]
 
     # Action
     sut.buy_nice_timing("Stock1", 1000)
