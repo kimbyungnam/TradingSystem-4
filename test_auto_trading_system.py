@@ -1,22 +1,23 @@
 from auto_trading_system import AutoTradingSystem
 
 
-def test_select_stock_broker():
+def test_select_stock_brocker_kiwer():
     # Arrange
     sut = AutoTradingSystem()
 
     # Action
-    sut.select_stock_broker("kiwer")
+    sut.select_stock_brocker("kiwer")
 
     # Assert
-    assert sut.stock_broker == "kiwer"
+    assert sut.stock_brocker.name == "kiwer"
 
-def test_select_stock_broker_nemo():
+
+def test_select_stock_brocker_nemo():
     # Arrange
     sut = AutoTradingSystem()
 
     # Action
-    sut.select_stock_broker("nemo")
+    sut.select_stock_brocker("nemo")
 
     # Assert
-    assert sut.stock_broker == "nemo"
+    assert sut.stock_brocker.name == "nemo"
