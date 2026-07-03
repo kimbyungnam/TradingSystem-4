@@ -12,4 +12,7 @@ class StockBrocker(Protocol):
 
 
 class AutoTradingSystem:
-    ...
+    stock_brocker: StockBrocker = None
+
+    def login(self, id, pw):
+        self.stock_brocker.login(id, pw)
