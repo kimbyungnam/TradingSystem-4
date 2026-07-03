@@ -1,25 +1,29 @@
 from pytest_mock import MockerFixture
 
-from auto_trading_system import AutoTradingSystem
+from auto_trading_system import AutoTradingSystem, KiwerStockBrocker
 
 
-def test_select_stock_brocker_kiwer():
+def test_create_stock_brocker_kiwer(mocker: MockerFixture):
     # Arrange
     sut = AutoTradingSystem()
+    mock_broker = mocker.Mock()
+    mock_broker.name = 'kiwer'
 
     # Action
-    sut.select_stock_brocker("kiwer")
+    sut.create_stock_brocker(mock_broker)
 
     # Assert
     assert sut.stock_brocker.name == "kiwer"
 
 
-def test_select_stock_brocker_nemo():
+def test_create_stock_brocker_nemo(mocker):
     # Arrange
     sut = AutoTradingSystem()
+    mock_broker = mocker.Mock()
+    mock_broker.name = 'nemo'
 
     # Action
-    sut.select_stock_brocker("nemo")
+    sut.create_stock_brocker(mock_broker)
 
     # Assert
     assert sut.stock_brocker.name == "nemo"
