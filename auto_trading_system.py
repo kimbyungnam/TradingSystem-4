@@ -58,16 +58,16 @@ class NemoStockBrocker(StockBrocker):
 
 
 class AutoTradingSystem:
-    def select_stock_brocker(self, broker_name):
-        self.stock_broker = broker_name
+    def create_stock_brocker(self, broker: StockBrocker):
+        self.stock_brocker = broker
 
     @property
     def stock_brocker(self):
         return self._stock_broker
 
     @stock_brocker.setter
-    def stock_brocker(self, broker_name):
-        self._stock_broker = broker_name
+    def stock_brocker(self, broker):
+        self._stock_broker = broker
 
     def buy(self, stock_code: str, price: int, count: int):
         self.stock_brocker.buy(stock_code, price, count)
