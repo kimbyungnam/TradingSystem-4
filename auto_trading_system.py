@@ -12,7 +12,7 @@ class StockBrocker(Protocol):
 
 
 class AutoTradingSystem:
-    stock_brocker = None
+    stock_brocker: StockBrocker = None
     def sell(self, stock_code: str, price: int, count: int):
         self.stock_brocker.sell(stock_code, price, count)
 
@@ -25,3 +25,6 @@ class AutoTradingSystem:
     @stock_broker.setter
     def stock_broker(self, broker_name):
         self._stock_broker = broker_name
+
+    def buy(self, stock_code: str, price: int, count: int):
+        self.stock_brocker.buy(stock_code, price, count)

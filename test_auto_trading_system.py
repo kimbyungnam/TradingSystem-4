@@ -3,7 +3,7 @@ from pytest_mock import MockerFixture
 from auto_trading_system import AutoTradingSystem
 
 
-def test_select_stock_broker_kiwer():
+def test_select_stock_broker():
     # Arrange
     sut = AutoTradingSystem()
 
@@ -12,7 +12,6 @@ def test_select_stock_broker_kiwer():
 
     # Assert
     assert sut.stock_broker == "kiwer"
-
 
 def test_select_stock_broker_nemo():
     # Arrange
