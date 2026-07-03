@@ -1,8 +1,10 @@
+from pytest_mock import MockerFixture
+
 from auto_trading_system import AutoTradingSystem
 from pytest_mock import MockerFixture
 
 
-def test_select_stock_broker():
+def test_select_stock_broker_kiwer():
     # Arrange
     sut = AutoTradingSystem()
 
