@@ -114,7 +114,7 @@ def test_buy_nice_timing_rising_trend_buy(mocker: MockerFixture):
     # Arrange
     sut = AutoTradingSystem()
     mock_brocker = mocker.patch("auto_trading_system.AutoTradingSystem.stock_brocker")
-    mock_brocker.get_price.return_value = [100, 200, 300]
+    mock_brocker.get_price.side_effect = [100, 200, 300]
 
     # Action
     sut.buy_nice_timing("Stock1", 1000)
