@@ -89,3 +89,12 @@ class AutoTradingSystem:
         price3 = self.get_price(stock_code)
         if price1 < price2 and price2 < price3:
             self.stock_brocker.buy(stock_code, price3, price // price3)
+
+    def sell_nice_timing(self, stock_code: str, count: int):
+        price1 = self.get_price(stock_code)
+        time.sleep(0.2)
+        price2 = self.get_price(stock_code)
+        time.sleep(0.2)
+        price3 = self.get_price(stock_code)
+        if price1 > price2 and price2 > price3:
+            self.stock_brocker.sell(stock_code, price3, count)
