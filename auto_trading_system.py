@@ -22,3 +22,6 @@ class AutoTradingSystem:
     @stock_broker.setter
     def stock_broker(self, broker_name):
         self._stock_broker = broker_name
+
+    def get_price(self, stock_code: str) -> int:
+        return self.stock_broker.get_price(stock_code)

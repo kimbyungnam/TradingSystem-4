@@ -14,7 +14,7 @@ def test_select_stock_broker():
 def test_get_price(mocker: MockerFixture):
     # Arrange
     sut = AutoTradingSystem()
-    mock_brocker = mocker.patch("auto_trading_system.AutoTradingSystem.stock_brocker")
+    mock_brocker = mocker.patch("auto_trading_system.AutoTradingSystem.stock_broker")
     mock_brocker.get_price.return_value = 2000
 
     # Action
