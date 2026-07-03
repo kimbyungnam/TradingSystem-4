@@ -85,7 +85,11 @@ class AutoTradingSystem:
     def sell(self, stock_code: str, price: int, count: int):
         self.stock_brocker.sell(stock_code, price, count)
 
-    def _is_buy(self, price_s):
+    def _able_buy(self, price_buy, price_s):
+        if price_s[-1] <= 0:
+            return False
+        if price_buy // price_s[-1] < 1:
+            return False
         for idx in range(1, len(price_s)):
             if price_s[idx-1] >= price_s[idx]:
                 return False
@@ -96,8 +100,8 @@ class AutoTradingSystem:
         for _ in range(self._n_check-1):
             time.sleep(0.2)
             price_s.append(self.get_price(stock_code))
-        last_price = price_s[-1]
-        if last_price > 0 and price // last_price >=1 and self._is_buy(price_s):
+        if self._able_buy(price, price_s):
+            last_price = price_s[-1]
             self.stock_brocker.buy(stock_code, last_price, price // last_price)
 
     def sell_nice_timing(self, stock_code: str, count: int):
