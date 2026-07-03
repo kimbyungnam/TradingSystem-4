@@ -1,22 +1,19 @@
+from pytest_mock import MockerFixture
+
 from auto_trading_system import AutoTradingSystem
 
 
-def test_select_stock_broker():
+
+
+
+def test_get_price(mocker: MockerFixture):
     # Arrange
     sut = AutoTradingSystem()
+    mock_brocker = mocker.patch("auto_trading_system.AutoTradingSystem.stock_brocker")
+    mock_brocker.get_price.return_value = 2000
 
     # Action
-    sut.select_stock_broker("kiwer")
+    price = sut.get_price("Stock1")
 
-    # Assert
-    assert sut.stock_broker == "kiwer"
-
-def test_select_stock_broker_nemo():
-    # Arrange
-    sut = AutoTradingSystem()
-
-    # Action
-    sut.select_stock_broker("nemo")
-
-    # Assert
-    assert sut.stock_broker == "nemo"
+    # Assertion
+    assert price == 2000
