@@ -36,7 +36,24 @@ class KiwerStockBrocker(StockBrocker):
 
 
 class NemoStockBrocker(StockBrocker):
-    ...
+    def __init__(self, nemo_api):
+        self._nemo_api = nemo_api
+
+    @property
+    def name(self):
+        return 'nemo'
+
+    def login(self, id: str, pw: str):
+        self._nemo_api.certification(id, pw)
+
+    def buy(self, stock_code: str, price: int, count: int):
+        self._nemo_api.purchasing_stock(stock_code, price, count)
+
+    def sell(self, stock_code: str, price: int, count: int):
+        self._nemo_api.selling_stock(stock_code, price, count)
+
+    def get_price(self, stock_code: str):
+        return self._nemo_api.get_market_price(stock_code)
 
 
 class AutoTradingSystem:
@@ -51,6 +68,8 @@ class AutoTradingSystem:
     def stock_brocker(self, broker_name):
         self._stock_broker = broker_name
 
+    def buy(self, stock_code: str, price: int, count: int):
+        self.stock_brocker.buy(stock_code, price, count)
 
     def get_price(self, stock_code: str) -> int:
         return self.stock_brocker.get_price(stock_code)
