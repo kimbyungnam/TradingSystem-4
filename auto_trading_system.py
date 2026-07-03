@@ -58,6 +58,10 @@ class NemoStockBrocker(StockBrocker):
 
 
 class AutoTradingSystem:
+    def __init__(self):
+        self._delay_period = 0.2
+        self._n_check = 3
+
     def create_stock_brocker(self, broker: StockBrocker):
         self.stock_brocker = broker
 
@@ -81,11 +85,17 @@ class AutoTradingSystem:
     def sell(self, stock_code: str, price: int, count: int):
         self.stock_brocker.sell(stock_code, price, count)
 
+    def _is_buy(self, price_s):
+        for idx in range(1, len(price_s)):
+            if price_s[idx-1] >= price_s[idx]:
+                return False
+        return True
+
     def buy_nice_timing(self, stock_code: str, price: int):
-        price1 = self.get_price(stock_code)
-        time.sleep(0.2)
-        price2 = self.get_price(stock_code)
-        time.sleep(0.2)
-        price3 = self.get_price(stock_code)
-        if price1 < price2 and price2 < price3:
-            self.stock_brocker.buy(stock_code, price3, price // price3)
+        price_s = [self.get_price(stock_code)]
+        for _ in range(self._n_check-1):
+            time.sleep(0.2)
+            price_s.append(self.get_price(stock_code))
+        last_price = price_s[-1]
+        if last_price > 0 and price // last_price >=1 and self._is_buy(price_s):
+            self.stock_brocker.buy(stock_code, last_price, price // last_price)
