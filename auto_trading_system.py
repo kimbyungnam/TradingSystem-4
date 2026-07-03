@@ -12,4 +12,5 @@ class StockBrocker(Protocol):
 
 
 class AutoTradingSystem:
-    ...
+    def buy(self, stock_code: str, price: int, count: int):
+        self.stock_brocker.buy(stock_code, price, count)
