@@ -75,6 +75,9 @@ class AutoTradingSystem:
     def get_price(self, stock_code: str) -> int:
         return self.stock_brocker.get_price(stock_code)
 
+    def sell(self, stock_code: str, price: int, count: int):
+        self.stock_brocker.sell(stock_code, price, count)
+
     def buy_nice_timing(self, stock_code: str, price: int):
         price1 = self.get_price(stock_code)
         time.sleep(0.2)
