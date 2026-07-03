@@ -1,5 +1,5 @@
 from typing import Protocol
-
+import time
 
 class StockBrocker(Protocol):
     @property
@@ -54,3 +54,12 @@ class AutoTradingSystem:
 
     def get_price(self, stock_code: str) -> int:
         return self.stock_brocker.get_price(stock_code)
+
+    def buy_nice_timing(self, stock_code: str, price: int):
+        price1 = self.get_price(stock_code)
+        time.sleep(0.2)
+        price2 = self.get_price(stock_code)
+        time.sleep(0.2)
+        price3 = self.get_price(stock_code)
+        if price1 < price2 and price2 < price3:
+            self.stock_brocker.buy(stock_code, price // price3)
