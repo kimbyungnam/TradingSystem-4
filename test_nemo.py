@@ -23,7 +23,7 @@ def test_nemo_stock_brocker_login(nemo_api, brocker):
     brocker.login("ID_NOT_IMPORTANT", "PW_NOT_IMPORTANT")
 
     # Assert
-    nemo_api.cerification.assert_called_once_with("ID_NOT_IMPORTANT", "PW_NOT_IMPORTANT")
+    nemo_api.certification.assert_called_once_with("ID_NOT_IMPORTANT", "PW_NOT_IMPORTANT")
 
 
 def test_nemo_stock_brocker_buy(nemo_api, brocker):
