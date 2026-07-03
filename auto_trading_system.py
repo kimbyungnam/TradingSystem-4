@@ -12,7 +12,8 @@ class StockBrocker(Protocol):
 
 
 class AutoTradingSystem:
-    stock_brocker: StockBrocker = None
+    def select_stock_broker(self, broker_name):
+        self.stock_broker = broker_name
 
     @property
     def stock_broker(self):
@@ -22,8 +23,6 @@ class AutoTradingSystem:
     def stock_broker(self, broker_name):
         self._stock_broker = broker_name
 
-    def select_stock_broker(self, broker_name):
-        self.stock_broker = broker_name
-
+    stock_brocker: StockBrocker = None
     def login(self, id, pw):
         self.stock_brocker.login(id, pw)
