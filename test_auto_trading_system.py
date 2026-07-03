@@ -11,6 +11,15 @@ def test_select_stock_broker():
     # Assert
     assert sut.stock_broker == "kiwer"
 
+def test_select_stock_broker_nemo():
+    # Arrange
+    sut = AutoTradingSystem()
+
+    # Action
+    sut.select_stock_broker("nemo")
+
+    # Assert
+    assert sut.stock_broker == "nemo"
 def test_get_price(mocker: MockerFixture):
     # Arrange
     sut = AutoTradingSystem()
