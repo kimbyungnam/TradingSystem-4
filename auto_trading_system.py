@@ -36,4 +36,4 @@ class AutoTradingSystem:
 
 
     def get_price(self, stock_code: str) -> int:
-        return self.stock_broker.get_price(stock_code)
+        return self.stock_brocker.get_price(stock_code)
