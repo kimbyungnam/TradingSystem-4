@@ -68,6 +68,9 @@ class AutoTradingSystem:
     def stock_brocker(self, broker):
         self._stock_broker = broker
 
+    def login(self, id: str, pw: str):
+        self.stock_brocker.login(id, pw)
+
     def buy(self, stock_code: str, price: int, count: int):
         self.stock_brocker.buy(stock_code, price, count)
 
