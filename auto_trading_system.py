@@ -11,18 +11,11 @@ class StockBrocker(Protocol):
     def get_price(self, stock_code: str): ...
 
 
-class AutoTradingSystem:
-    def select_stock_brocker(self, broker_name):
-        self.stock_broker = broker_name
+class KiwerStockBrocker:
+    def __init__(self, kiwer_api):
+        self.kiwer_api = kiwer_api
 
-    @property
-    def stock_brocker(self):
-        return self._stock_broker
+    def login(self, id: str, pw: str):
+        self.kiwer_api.login(id, pw)
 
-    @stock_brocker.setter
-    def stock_brocker(self, broker_name):
-        self._stock_broker = broker_name
 
-    stock_brocker: StockBrocker = None
-    def login(self, id, pw):
-        self.stock_brocker.login(id, pw)
