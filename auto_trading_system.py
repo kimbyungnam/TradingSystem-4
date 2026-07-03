@@ -14,6 +14,10 @@ class StockBrocker(Protocol):
     def get_price(self, stock_code: str): ...
 
 
+class KiwerStockBrocker(StockBrocker):
+    ...
+
+
 class AutoTradingSystem:
     def select_stock_broker(self, broker_name):
         self.stock_broker = broker_name
