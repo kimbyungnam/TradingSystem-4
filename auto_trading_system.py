@@ -12,15 +12,15 @@ class StockBrocker(Protocol):
 
 
 class AutoTradingSystem:
-    def select_stock_broker(self, broker_name):
+    def select_stock_brocker(self, broker_name):
         self.stock_broker = broker_name
 
     @property
-    def stock_broker(self):
+    def stock_brocker(self):
         return self._stock_broker
 
-    @stock_broker.setter
-    def stock_broker(self, broker_name):
+    @stock_brocker.setter
+    def stock_brocker(self, broker_name):
         self._stock_broker = broker_name
 
     stock_brocker: StockBrocker = None
