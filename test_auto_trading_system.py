@@ -48,3 +48,15 @@ def test_buy(mocker: MockerFixture):
 
     # Assertion
     mock_brocker.buy.assert_called_once_with("Stock1", 1000, 2)
+
+
+def test_sell(mocker: MockerFixture):
+    # Arrange
+    sut = AutoTradingSystem()
+    mock_brocker = mocker.patch("auto_trading_system.AutoTradingSystem.stock_brocker")
+
+    # Action
+    sut.sell("Stock1", 1000, 2)
+
+    # Assertion
+    mock_brocker.sell.assert_called_once_with("Stock1", 1000, 2)
