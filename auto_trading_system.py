@@ -12,6 +12,8 @@ class StockBrocker(Protocol):
 
 
 class AutoTradingSystem:
+    stock_brocker: StockBrocker = None
+
     def select_stock_broker(self, broker_name):
         self.stock_broker = broker_name
 
