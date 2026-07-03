@@ -14,7 +14,7 @@ def test_select_stock_broker_kiwer():
     assert sut.stock_broker == "kiwer"
 
 
-def test_select_stock_broker_nemom():
+def test_select_stock_broker_nemo():
     # Arrange
     sut = AutoTradingSystem()
 
