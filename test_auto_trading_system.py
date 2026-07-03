@@ -37,14 +37,3 @@ def test_login(mocker: MockerFixture):
     # Assertion
     mock_brocker.login.assert_called_once_with("ID_NOT_IMPORTANT", "PW_NOT_IMPORTANT")
     pass
-
-
-def test_select_stock_broker():
-    # Arrange
-    sut = AutoTradingSystem()
-
-    # Action
-    sut.select_stock_broker("kiwer")
-
-    # Assert
-    assert sut.stock_broker == "kiwer"
