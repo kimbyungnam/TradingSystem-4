@@ -45,7 +45,12 @@ jobs:
       if: steps.changed-files.outputs.any_changed == 'true'
       run: |
         ruff format --check ${{ steps.changed-files.outputs.all_changed_files }}
-        
+
+    - name: Ruff isort check
+      if: steps.changed-files.outputs.any_changed == 'true'
+      run: |
+        ruff check --select I ${{ steps.changed-files.outputs.all_changed_files }}
+
     - name: Check commit messages
       run: |
         cz check \
