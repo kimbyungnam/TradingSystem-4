@@ -6,6 +6,7 @@ from auto_trading_system import NemoStockBrocker
 
 @pytest.fixture
 def nemo_api(mocker: MockerFixture):
+    print("nemo")
     return mocker.Mock()
 
 
