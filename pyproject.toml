@@ -1,0 +1,11 @@
+[build-system]
+requires = ["flit_core >=3.11,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "codefab"
+authors = [{name = "Bug Hunters 4", email = "kimbyungnam@ajou.ac.kr"}]
+readme = "README.md"
+requires-python = ">= 3.13"
+version = "0.0.1"
+description = "CodeFab Interpreter Project"
